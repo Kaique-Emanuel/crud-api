@@ -1,0 +1,131 @@
+body {
+background-color: #1f1f1f; /* O preto que você gostou */
+  color: white;
+  font-family: "Share Tech", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#lista {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.row{
+margin-top: 10%;
+}
+
+#titulo{
+  margin: 10%;
+  position: relative; /* 🔥 necessário */
+  
+}
+
+#Titulo-Principal {
+  font-family: "Archivo Black", sans-serif;
+  color: white;
+}
+
+
+#Sub-Titulo{
+  font-family: "Share Tech", sans-serif;
+  color: white;
+  font-size: 20px;
+  margin-top: -20px;
+}
+
+
+
+#cards {
+  font-family: "Share Tech", sans-serif;
+  margin: 40px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; 
+}
+/* CARD BASE */
+.dashboard-card {
+flex: 1;
+  background: #252525; /* Um tom levemente acima do preto para dar profundidade */
+  border-radius: 12px;
+  padding: 25px;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+  min-width: 250px;
+  border-left: 5px solid #00ff88;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+}
+
+/* CONTEÚDO */
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text {
+  color: #aaa;
+  margin-bottom: 5px;
+}
+
+.icon {
+  font-size: 40px;
+}
+
+/* CORES POR TIPO */
+.produtos .icon {
+  color: #00ff88;
+}
+
+.alerta .icon {
+  color: orange;
+}
+
+.valor .icon {
+  color: #00ff88;
+}
+
+/* OPCIONAL: borda colorida (nível premium) */
+.produtos {
+  border-left: 4px solid #00ff88;
+}
+
+.alerta {
+  border-left: 4px solid orange;
+}
+
+.valor {
+  border-left: 4px solid #00ff88;
+}
+
+#Status{
+ position: absolute;
+  top: 0;
+  right: 0;
+
+  background-color: #00c853;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+
+}
+
+/* Cores específicas para o Fluxo */
+.entrada { border-left: 5px solid #00ff88; }
+.entrada .icon { color: #00ff88; }
+
+.saida { border-left: 5px solid #ff4444; } /* Vermelho para saídas */
+.saida .icon { color: #ff4444; }
+
+/* Estilo para as badges na tabela de fluxo */
+.badge-entrada { background-color: rgba(0, 255, 136, 0.2); color: #00ff88; padding: 5px 10px; border-radius: 5px; }
+.badge-saida { background-color: rgba(255, 68, 68, 0.2); color: #ff4444; padding: 5px 10px; border-radius: 5px; }
