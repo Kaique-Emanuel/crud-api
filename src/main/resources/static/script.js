@@ -1,17 +1,15 @@
-// --- CONFIGURAÇÃO GLOBAL ---
-const API_URL = 'http://localhost:8080/produto';
+
+const API_URL = 'https://crud-api-production-d6aa.up.railway.app';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Inicializa carregamento de dados conforme a página
+   
     if (document.getElementById('valorTotal')) carregarDashboard();
     if (document.getElementById('produto-tbody')) carregarProdutos();
     
-    // Inicia monitoramento de status (centralizado em uma função)
     monitorarSistema();
-    setInterval(monitorarSistema, 15000); // A cada 15 segundos
+    setInterval(monitorarSistema, 15000);
 });
 
-// --- FUNÇÃO: DASHBOARD ---
 function carregarDashboard() {
     fetch(API_URL)
         .then(res => res.json())
@@ -35,7 +33,7 @@ function carregarDashboard() {
         .catch(err => console.error("Erro Dashboard:", err));
 }
 
-// --- FUNÇÃO: TABELA ---
+
 function carregarProdutos() {
     fetch(API_URL)
         .then(res => res.json())
@@ -60,7 +58,7 @@ function carregarProdutos() {
         });
 }
 
-// --- FUNÇÃO: DELETAR ---
+
 function deletarProduto(id) {
     if (confirm("Deseja excluir este produto?")) {
         fetch(`${API_URL}/${id}`, { method: 'DELETE' })
@@ -68,7 +66,7 @@ function deletarProduto(id) {
     }
 }
 
-// --- FUNÇÕES DE EDIÇÃO (BARRA LATERAL) ---
+
 window.carregarListaEdicao = function() {
     fetch(API_URL)
         .then(res => res.json())
@@ -88,29 +86,25 @@ window.carregarListaEdicao = function() {
 };
 
 window.abrirFormEdicao = function(id) {
-    // 1. Fecha o modal da lista corretamente
     const modalListaEl = document.getElementById('modalListaEdicao');
     const instanceLista = bootstrap.Modal.getInstance(modalListaEl);
     if (instanceLista) instanceLista.hide();
 
-    // 2. Busca os dados do produto específico
+
     fetch(`${API_URL}/${id}`)
         .then(res => res.json())
         .then(p => {
-            // Preenche os campos do formulário
             document.getElementById('edit-id').value = p.id;
             document.getElementById('edit-nome').value = p.nome;
             document.getElementById('edit-valor').value = p.valor;
             document.getElementById('edit-quantidade').value = p.quantidade;
 
-            // 3. Abre o modal de edição
             const modalEdicao = new bootstrap.Modal(document.getElementById('modalEditar'));
             modalEdicao.show();
         })
         .catch(err => alert("Erro ao buscar dados do produto: " + err));
 };
 
-// --- SUBMIT ÚNICO (CRIAR E EDITAR) ---
 document.addEventListener('submit', function (e) {
     const targetId = e.target.id;
     if (targetId !== 'formCadastro' && targetId !== 'formEditar') return;
@@ -118,7 +112,6 @@ document.addEventListener('submit', function (e) {
     e.preventDefault();
     const isEdicao = (targetId === 'formEditar');
 
-    // Captura os dados
     const id = isEdicao ? document.getElementById('edit-id').value : '';
     const url = isEdicao ? `${API_URL}/${id}` : API_URL;
     const metodo = isEdicao ? 'PUT' : 'POST';
@@ -145,7 +138,7 @@ document.addEventListener('submit', function (e) {
     .catch(err => console.error("Erro na requisição:", err));
 });
 
-// --- MONITORAMENTO DE SISTEMA ---
+
 function monitorarSistema() {
     const pilula = document.getElementById('Status');
     const cIcon = document.getElementById('status-icon');
@@ -156,7 +149,6 @@ function monitorarSistema() {
         .then(res => {
             if (!res.ok) throw new Error();
             
-            // STATUS ONLINE
             if (pilula) {
                 pilula.innerText = "Sistema Online";
                 pilula.style.backgroundColor = "#00c853";
@@ -168,7 +160,6 @@ function monitorarSistema() {
             }
         })
         .catch(() => {
-            // STATUS OFFLINE
             if (pilula) {
                 pilula.innerText = "Sistema Offline";
                 pilula.style.backgroundColor = "#ff4444";
