@@ -1,5 +1,5 @@
 
-const API_URL = 'https://crud-api-production-d6aa.up.railway.app';
+const API_URL = 'https://crud-api-production-1281.up.railway.app/usuarios';
 
 document.addEventListener('DOMContentLoaded', () => {
    
