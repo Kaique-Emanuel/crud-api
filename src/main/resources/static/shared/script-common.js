@@ -1,7 +1,7 @@
-const API_URL        = 'http://localhost:8080/produto';
-const VENDAS_URL     = 'http://localhost:8080/venda';
-const USUARIO_URL    = 'http://localhost:8080/usuario';
-const USUARIO_ME_URL = 'http://localhost:8080/usuario/me';
+const API_URL        = 'https://crud-api-production-1281.up.railway.app/produto';
+const VENDAS_URL     = 'https://crud-api-production-1281.up.railway.app/venda';
+const USUARIO_URL    = 'https://crud-api-production-1281.up.railway.app/usuario';
+const USUARIO_ME_URL = 'https://crud-api-production-1281.up.railway.app/usuario/me';
 const FOTO_PADRAO    = '/assets/img/perfil-padrao.png';
 
 function monitorarSistema() {

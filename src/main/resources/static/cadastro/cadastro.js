@@ -1,4 +1,4 @@
-    const API = 'http://localhost:8080/usuario';
+    const API = 'https://crud-api-production-1281.up.railway.app/usuario';
 
     // Toggle senhas
     document.getElementById('toggleSenha').addEventListener('click',    () => toggleVer('senha',          'toggleSenha'));
