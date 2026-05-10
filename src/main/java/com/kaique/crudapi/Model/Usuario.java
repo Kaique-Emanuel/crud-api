@@ -1,61 +1,42 @@
 package com.kaique.crudapi.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "usuarios")
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
-    private String nome;
-    private String descricao;
-    private Double valor;
-    private Integer quantidade;
 
+    @Column(unique = true)
+    private String login;
+    private String email;
 
-    public Long getId() {
-        return id;
-    }
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String senha;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Boolean resetSolicitado = false;
+    private LocalDateTime resetSolicitadoEm;
 
-    public String getNome() {
-        return nome;
-    }
+    @Column
+    private String role = "USER"; // ← aqui
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Double getValor() {
-        return valor;
-    }
-
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
+    public Long getId()               { return id; }
+    public void setId(Long id)        { this.id = id; }
+    public String getLogin()          { return login; }
+    public void setLogin(String l)    { this.login = l; }
+    public String getEmail()          { return email; }
+    public void setEmail(String e)    { this.email = e; }
+    public String getSenha()          { return senha; }
+    public void setSenha(String s)    { this.senha = s; }
+    public Boolean getResetSolicitado() { return resetSolicitado; }
+    public void setResetSolicitado(Boolean r) { this.resetSolicitado = r; }
+    public LocalDateTime getResetSolicitadoEm() { return resetSolicitadoEm; }
+    public void setResetSolicitadoEm(LocalDateTime e) { this.resetSolicitadoEm = e; }
+    public String getRole()           { return role; }
+    public void setRole(String r)     { this.role = r; }
 }

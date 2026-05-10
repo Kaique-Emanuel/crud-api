@@ -1,38 +1,42 @@
 package com.kaique.crudapi.Service;
 
-import com.kaique.crudapi.Interface.ProdutoRepository;
-import com.kaique.crudapi.Model.Produto;
+import com.kaique.crudapi.Interface.UsuarioRepository;
+import com.kaique.crudapi.Model.Usuario;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
-public class ProdutoService {
-    private final ProdutoRepository repository;
+public class UsuarioService {
 
-    public ProdutoService(ProdutoRepository repository) {
+
+    private final UsuarioRepository repository;
+
+    public UsuarioService(UsuarioRepository repository) {
         this.repository = repository;
     }
 
-    public List<Produto> listaTodos(){
+    public List<Usuario> listaTodos(){
         return repository.findAll();
     }
 
-    public Produto salvar(Produto produto){
-        return repository.save(produto);
+    public Usuario salvar(Usuario usuario){
+        return repository.save(usuario);
     }
 
-    public void excluirProduto(Long id){
+    public void excluirUsuario(Long id){
         repository.deleteById(id);
     }
 
-    public  Produto buscarProduto(Long id){
+    public Usuario buscarUsuario(Long id){
         return repository.findById(id).orElse(null);
     }
 
+    public Usuario buscarPorLogin(String login) {
+        return repository.findByLogin(login);
+    }
 
-
-
-
+    public Usuario buscarPorEmail(String email) {
+        return repository.findFirstByEmailIgnoreCase(email);
+    }
 
 }

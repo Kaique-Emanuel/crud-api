@@ -1,0 +1,138 @@
+/* Estilos específicos da página Produtos */
+.dashboard-card {
+  background: #252525;
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+  border-left: 5px solid #00ff88;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-3px);
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text {
+  color: #aaa;
+  margin-bottom: 5px;
+}
+
+.icon {
+  font-size: 40px;
+}
+
+.alerta .icon {
+  color: orange;
+}
+
+.alerta {
+  border-left: 4px solid orange;
+}
+
+#Titulo-Principal {
+  font-family: "Archivo Black", sans-serif;
+  color: white;
+}
+
+.tabela-scroll {
+  overflow-x: auto;
+}
+
+.venda-busca-wrapper {
+  position: relative;
+}
+
+.venda-resultados {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.venda-opcao {
+  width: 100%;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  background: #171717;
+  color: #fff;
+  padding: 8px 10px;
+  text-align: left;
+  display: grid;
+  gap: 2px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.venda-opcao:hover:not(:disabled) {
+  border-color: #00ff88;
+  background: rgba(0, 255, 136, 0.08);
+}
+
+.venda-opcao:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.venda-opcao small {
+  color: #aaa;
+}
+
+.venda-card {
+  background: #252525;
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+  border-left: 5px solid #00ff88;
+}
+
+#Status {
+  background-color: #00c853;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+#card-status .card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+#card-status .icon {
+  font-size: 40px;
+}
+
+.produtos .icon {
+  color: #00ff88;
+}
+
+.produtos {
+  border-left: 4px solid #00ff88;
+}
+
+.valor .icon {
+  color: #00ff88;
+}
+
+.valor {
+  border-left: 4px solid #00ff88;
+}
+
+.entrada {
+  border-left: 5px solid #00ff88;
+}
+
+.entrada .icon {
+  color: #00ff88;
+}

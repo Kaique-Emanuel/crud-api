@@ -1,0 +1,139 @@
+<nav class="navbar navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><i class="bi bi-box-seam me-2"></i> Sistema de Estoque</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="menuLateral">
+      <button type="button" class="btn-sair-fora" data-bs-dismiss="offcanvas">
+        <i class="bi bi-chevron-left fs-4"></i>
+      </button>
+
+<div class="offcanvas-header flex-column align-items-center w-100 pt-4">
+  <button type="button" class="btn-perfil-wrapper" data-bs-toggle="modal" data-bs-target="#modalPerfil">
+    <div class="position-relative">
+      <img src="/assets/img/perfil-padrao.png" id="user-foto" alt="Foto de Perfil" class="img-perfil-custom">
+      
+      <span class="status-indicator"></span>
+    </div>
+  </button>
+  
+  <h5 id="user-nome" class="mb-0 text-white fw-bold mt-2">Carregando...</h5>
+  <small id="user-cargo" class="text-primary fw-semibold text-uppercase">Carregando...</small>
+</div>
+
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" href="/home/index.html">
+              <i class="bi bi-house me-2"></i> Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" href="/produtos/produtos.html">
+              <i class="bi bi-box-seam me-2"></i> Produtos
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-gear me-2"></i> Gestão
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalCadastro"><i class="bi bi-plus-circle me-2"></i> Cadastrar</a></li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalListaEdicao" onclick="carregarListaEdicao()"><i class="bi bi-pencil-square me-2"></i> Editar</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/sobre/Sobre.html"><i class="bi bi-bar-chart me-2"></i> Sobre</a></li>
+              <li><a class="dropdown-item" href="/usuarios/usuarios.html" id="btnAdmin" style="display: none;">
+              <i class="bi bi-bar-chart me-2"></i> Administrador</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="modal fade" id="modalPerfil" tabindex="-1" aria-hidden="true" style="z-index: 2000;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white border-secondary shadow-lg">
+      
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title">Perfil</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        <h6 class="text-secondary mb-3">Escolha ou adicione uma foto:</h6>
+        
+        <div id="opcoes-fotos-container" class="d-flex justify-content-center align-items-center gap-3 my-3">
+    <img src="/assets/img/perfil-padrao.png" class="img-opcao" onclick="mudarFoto('/assets/img/perfil-padrao.png')" title="Usar imagem padrão">
+    
+    <label for="upload-foto" class="btn-add-foto" title="Adicionar nova foto">
+        <i class="bi bi-plus-lg"></i>
+        <input type="file" id="upload-foto" accept="image/*" style="display: none;" onchange="uploadNovaFoto(this)">
+    </label>
+</div>
+        
+        <hr class="border-secondary">
+        
+        <div class="text-start px-3">
+          <p class="mb-1 text-secondary"><small>Nome:</small></p>
+          <p class="fw-bold" id="info-nome">...</p>
+          <p class="mb-1 text-secondary"><small>email:</small></p>
+          <p class="fw-bold text-primary" id="info-email">...</p>
+        </div>
+      </div>
+
+<div class="modal-footer border-secondary">
+  <button type="button" class="btn btn-primary" data-bs-target="#modalAlterarSenha" data-bs-toggle="modal">
+    Alterar senha
+  </button>
+  <form method="post" action="/logout" class="m-0">
+    <button type="submit" class="btn btn-secondary">Sair da conta</button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalAlterarSenha" tabindex="-1" aria-hidden="true" style="z-index: 2100;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white border-secondary shadow-lg">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title">Alterar senha</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger d-none" id="senha-erro"></div>
+        <div class="alert alert-success d-none" id="senha-sucesso"></div>
+
+        <div class="mb-3">
+          <label class="form-label">Senha atual</label>
+          <div class="position-relative">
+            <input type="password" id="senha-atual" class="form-control pe-5" autocomplete="current-password">
+            <i class="bi bi-eye toggle-password position-absolute top-50 end-0 translate-middle-y pe-3" id="toggle-senha-atual" role="button" aria-label="Mostrar senha"></i>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nova senha</label>
+          <div class="position-relative">
+            <input type="password" id="nova-senha" class="form-control pe-5" autocomplete="new-password">
+            <i class="bi bi-eye toggle-password position-absolute top-50 end-0 translate-middle-y pe-3" id="toggle-nova-senha" role="button" aria-label="Mostrar nova senha"></i>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Confirmar nova senha</label>
+          <div class="position-relative">
+            <input type="password" id="confirmar-nova-senha" class="form-control pe-5" autocomplete="new-password">
+            <i class="bi bi-eye toggle-password position-absolute top-50 end-0 translate-middle-y pe-3" id="toggle-confirmar-nova-senha" role="button" aria-label="Mostrar confirmação de senha"></i>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-secondary">
+        <button type="button" class="btn btn-secondary" data-bs-target="#modalPerfil" data-bs-toggle="modal">Voltar</button>
+        <button type="button" class="btn btn-primary" onclick="alterarMinhaSenha()">Salvar senha</button>
+      </div>
+    </div>
+  </div>
+</div>

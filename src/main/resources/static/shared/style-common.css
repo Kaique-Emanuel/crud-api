@@ -1,0 +1,164 @@
+/* Estilos compartilhados entre todas as páginas */
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: "Share Tech", sans-serif;
+  background: radial-gradient(circle at top left, rgba(0, 200, 83, 0.1), transparent 25%),
+              linear-gradient(180deg, #121212 0%, #181a1f 100%);
+  background-attachment: fixed;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 20% 18%, rgba(0, 200, 83, 0.08), transparent 16%),
+              radial-gradient(circle at 85% 10%, rgba(0, 200, 83, 0.05), transparent 12%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* --- Menu Lateral --- */
+#menuLateral { overflow: visible !important; }
+
+.btn-sair-fora {
+  position: absolute !important;
+  left: -35px; top: 20px;
+  background-color: #212529 !important;
+  width: 35px; height: 45px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px 0 0 8px;
+  border: none; color: white;
+  box-shadow: -5px 0 10px rgba(0,0,0,0.3);
+  z-index: 1060;
+}
+
+.btn-perfil-wrapper {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-perfil-wrapper:hover {
+  transform: scale(1.05);
+}
+
+.img-perfil-custom {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #0d6efd;
+  padding: 3px;
+}
+
+.status-indicator {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 15px;
+  height: 15px;
+  background: #28a745;
+  border: 2px solid #212529;
+  border-radius: 50%;
+}
+
+#menuLateral .nav-link {
+  margin: 5px 12px;
+  border-radius: 10px;
+  color: #aeb7c1 !important;
+  padding: 12px 15px !important;
+  transition: 0.3s;
+}
+
+#menuLateral .nav-link.active {
+  background-color: #0d6efd !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+.img-opcao {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.img-opcao:hover {
+  border-color: #0d6efd;
+}
+
+.btn-add-foto {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px dashed #0d6efd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #0d6efd;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+  background-color: rgba(13, 110, 253, 0.05);
+}
+
+.btn-add-foto:hover {
+  background-color: #0d6efd;
+  color: white;
+  border-style: solid;
+  transform: scale(1.05);
+}
+
+.wrapper-foto-opcao {
+  position: relative;
+  display: inline-block;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 14px;
+  left: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aeb7c1;
+  font-size: 1rem;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.toggle-password:hover {
+  color: #ffffff;
+}
+
+.img-opcao.selecionada {
+  transform: scale(1.15);
+  border: 3px solid #0d6efd;
+}
+
+.btn-deletar-foto {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
