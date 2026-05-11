@@ -1,3 +1,6 @@
+// dashboard.js - Script para a página dashboard 
+
+// Inicia o dashboard ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('valorTotal')) carregarDashboard();
     if (document.getElementById('dashboard-historico-vendas')) carregarHistoricoDashboard();
@@ -19,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(navbarEl, { childList: true, subtree: true });
 });
 
+
+//  carrega info do dashboard
 function carregarDashboard() {
     fetch(API_URL)
         .then(res => res.json())
@@ -43,6 +48,7 @@ function carregarDashboard() {
         .catch(err => console.error('Erro Dashboard:', err));
 }
 
+// carrega os relatorios
 function carregarRelatoriosDashboard() {
     fetch(`${VENDAS_URL}/relatorio`)
         .then(res => res.json())
@@ -57,6 +63,7 @@ function carregarRelatoriosDashboard() {
         .catch(err => console.error('Erro ao carregar relatórios:', err));
 }
 
+// carrega o historico de vendas
 function carregarHistoricoDashboard() {
     const container = document.getElementById('dashboard-historico-vendas');
     if (!container) return;

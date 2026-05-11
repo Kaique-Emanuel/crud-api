@@ -1,9 +1,15 @@
+ // cadastro.js - Script para a página de cadastro de usuário
+  
+
     const API = 'https://crud-api-production-1281.up.railway.app/usuario';
 
-    // Toggle senhas
+  
+    // visibilidade da senha
+    
     document.getElementById('toggleSenha').addEventListener('click',    () => toggleVer('senha',          'toggleSenha'));
     document.getElementById('toggleConfirmar').addEventListener('click', () => toggleVer('confirmarSenha', 'toggleConfirmar'));
 
+    // mostra e nao mostrar a senha (mostra/sumir)
     function toggleVer(inputId, iconId) {
         const input  = document.getElementById(inputId);
         const icon   = document.getElementById(iconId);
@@ -13,8 +19,9 @@
             ? 'bi bi-eye-slash toggle-password'
             : 'bi bi-eye toggle-password';
     }
+   
 
-    // Barra de força da senha
+    // barrinha de forca da senha
     document.getElementById('senha').addEventListener('input', function () {
         const val   = this.value;
         const fill  = document.getElementById('forcaFill');
@@ -41,7 +48,9 @@
         texto.style.color     = n.cor;
     });
 
-    // Validação confirmar senha em tempo real
+
+
+    // vendo se as senha sao iguais ou nao
     document.getElementById('confirmarSenha').addEventListener('input', validarConfirmar);
 
     function validarConfirmar() {
@@ -63,7 +72,7 @@
         }
     }
 
-    // Cadastrar
+    // processa o cadastro dr novo usuário
     async function cadastrar() {
         const login     = document.getElementById('login').value.trim();
         const email     = document.getElementById('email').value.trim();
@@ -85,7 +94,7 @@
             return mostrarErro('As senhas não coincidem.');
         }
 
-        // Loading
+        // Carregarmento
         document.getElementById('btnTexto').style.display   = 'none';
         document.getElementById('btnSpinner').style.display  = 'block';
         document.getElementById('btnCadastro').disabled      = true;
@@ -112,6 +121,8 @@
         }
     }
 
+
+    // mostra mensagens de erro para o usuário
     function mostrarErro(msg) {
         document.getElementById('alertErroTexto').innerText = msg;
         document.getElementById('alertErro').classList.add('show');

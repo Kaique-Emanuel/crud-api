@@ -15,7 +15,7 @@
  
         document.addEventListener('DOMContentLoaded', carregarUsuarios);
  
-        // ── CARREGAR USUÁRIOS ──
+        // CARREGAR USUÁRIOS 
         function carregarUsuarios() {
             const grid = document.getElementById('grid-usuarios');
             grid.innerHTML = '<div class="empty-state"><i class="bi bi-arrow-repeat" style="animation:spin 1s linear infinite"></i><p>Carregando...</p></div>';

@@ -4,6 +4,7 @@ const USUARIO_URL    = 'https://crud-api-production-1281.up.railway.app/usuario'
 const USUARIO_ME_URL = 'https://crud-api-production-1281.up.railway.app/usuario/me';
 const FOTO_PADRAO    = '/assets/img/perfil-padrao.png';
 
+// monitora se o servidor e banco tao online
 function monitorarSistema() {
     const pilula = document.getElementById('Status');
     const cIcon  = document.getElementById('status-icon');
@@ -29,6 +30,7 @@ function monitorarSistema() {
         });
 }
 
+// pega os dados do user logado
 function carregarDadosUsuario() {
     fetch(USUARIO_ME_URL)
         .then(res => { if (!res.ok) throw new Error(); return res.json(); })
@@ -58,6 +60,7 @@ function carregarDadosUsuario() {
         });
 }
 
+// muda a foto do user
 function mudarFoto(novaUrl) {
     const fotoEl = document.getElementById('user-foto');
     if (fotoEl) fotoEl.src = novaUrl;
@@ -65,12 +68,14 @@ function mudarFoto(novaUrl) {
     marcarFotoSelecionada(novaUrl);
 }
 
+// marca qual foto tá selecionada
 function marcarFotoSelecionada(url) {
     document.querySelectorAll('.img-opcao').forEach(img => {
         img.classList.toggle('selecionada', img.getAttribute('src') === url || img.src === url);
     });
 }
 
+// deleta a foto customizada
 function deletarFotoCustomizada(event) {
     event.stopPropagation();
     if (!confirm('Deseja remover sua foto personalizada?')) return;
@@ -80,6 +85,7 @@ function deletarFotoCustomizada(event) {
     atualizarInterfaceFotos();
 }
 
+// atualiza a interface de seleção de fotos
 function atualizarInterfaceFotos() {
     const container = document.getElementById('opcoes-fotos-container');
     if (!container) return;
@@ -111,6 +117,7 @@ function atualizarInterfaceFotos() {
     marcarFotoSelecionada(localStorage.getItem('userFoto') || FOTO_PADRAO);
 }
 
+// faz upload da foto nova
 function uploadNovaFoto(input) {
     if (!input.files?.[0]) return;
     const leitor = new FileReader();
@@ -118,6 +125,7 @@ function uploadNovaFoto(input) {
     leitor.readAsDataURL(input.files[0]);
 }
 
+// altera a senha do usuario
 async function alterarMinhaSenha() {
     const senhaAtual = document.getElementById('senha-atual')?.value;
     const novaSenha = document.getElementById('nova-senha')?.value;
@@ -176,6 +184,7 @@ async function alterarMinhaSenha() {
     }
 }
 
+// marca qual link do menu ta ativo
 function setActiveLink() {
     const pagina = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('#menuLateral .nav-link').forEach(link => {
@@ -184,6 +193,7 @@ function setActiveLink() {
     });
 }
 
+// mostra/esconde a senha
 function togglePasswordVisibility(toggleId, inputId) {
     const toggle = document.getElementById(toggleId);
     const input = document.getElementById(inputId);
@@ -199,21 +209,25 @@ function togglePasswordVisibility(toggleId, inputId) {
     });
 }
 
+// inicia os botoes de mostrar/esconder senha
 function initPasswordToggles() {
     togglePasswordVisibility('toggle-senha-atual', 'senha-atual');
     togglePasswordVisibility('toggle-nova-senha', 'nova-senha');
     togglePasswordVisibility('toggle-confirmar-nova-senha', 'confirmar-nova-senha');
 }
 
+// coloca texto num elemento
 function setText(id, value) {
     const el = document.getElementById(id);
     if (el) el.innerText = value;
 }
 
+// formata numero em reais
 function formatarMoeda(valor) {
     return Number(valor || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
+// formata a data e hora
 function formatarDataHora(valor) {
     if (!valor) return '--/-- --:--';
     const data = new Date(valor);
