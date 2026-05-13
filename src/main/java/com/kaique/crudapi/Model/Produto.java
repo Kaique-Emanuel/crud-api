@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 
 
 @Entity
+// modelo de produto
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

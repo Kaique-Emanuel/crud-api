@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+// service de produto
 public class ProdutoService {
     private final ProdutoRepository repository;
 
@@ -22,6 +23,7 @@ public class ProdutoService {
         return repository.save(produto);
     }
 
+    // deleta produto por id
     public void excluirProduto(Long id){
         repository.deleteById(id);
     }

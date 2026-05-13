@@ -1,35 +1,36 @@
-   const API          = '/usuario';
-        const FOTO_PADRAO  = '/assets/img/perfil-padrao.png';
-        let todosUsuarios  = [];
- 
-        // Carrega navbar e inicializa
-        fetch('/shared/navbar.html')
-            .then(r => r.text())
-            .then(html => {
-                document.getElementById('navbar').innerHTML = html;
-                setTimeout(() => {
-                    setActiveLink();
-                    carregarDadosUsuarioNav();
-                }, 100);
-            });
- 
-        document.addEventListener('DOMContentLoaded', carregarUsuarios);
- 
-        // CARREGAR USUÁRIOS 
-        function carregarUsuarios() {
-            const grid = document.getElementById('grid-usuarios');
-            grid.innerHTML = '<div class="empty-state"><i class="bi bi-arrow-repeat" style="animation:spin 1s linear infinite"></i><p>Carregando...</p></div>';
- 
-            fetch(API)
-                .then(r => r.json())
-                .then(data => { todosUsuarios = data; renderizarCards(data); })
-                .catch(() => {
-                    grid.innerHTML = '<div class="empty-state"><i class="bi bi-wifi-off"></i><p>Erro ao conectar ao servidor.</p></div>';
-                });
-        }
- 
-        // ── RENDERIZAR CARDS ──
-        function renderizarCards(lista) {
+// usuario.js - só o que roda na tela de usuarios
+const API          = '/usuario';
+const FOTO_PADRAO  = '/assets/img/perfil-padrao.png';
+let todosUsuarios  = [];
+
+// carrega navbar e inicia a página
+fetch('/shared/navbar.html')
+    .then(r => r.text())
+    .then(html => {
+        document.getElementById('navbar').innerHTML = html;
+        setTimeout(() => {
+            setActiveLink();
+            carregarDadosUsuarioNav();
+        }, 100);
+    });
+
+document.addEventListener('DOMContentLoaded', carregarUsuarios);
+
+// carrega todos os usuarios do server
+function carregarUsuarios() {
+    const grid = document.getElementById('grid-usuarios');
+    grid.innerHTML = '<div class="empty-state"><i class="bi bi-arrow-repeat" style="animation:spin 1s linear infinite"></i><p>Carregando...</p></div>';
+
+    fetch(API)
+        .then(r => r.json())
+        .then(data => { todosUsuarios = data; renderizarCards(data); })
+        .catch(() => {
+            grid.innerHTML = '<div class="empty-state"><i class="bi bi-wifi-off"></i><p>Erro ao conectar ao servidor.</p></div>';
+        });
+}
+
+// renderiza os cards de usuario
+function renderizarCards(lista) {
             const grid  = document.getElementById('grid-usuarios');
             const badge = document.getElementById('badge-total');
             badge.innerText = `${lista.length} USUÁRIO${lista.length !== 1 ? 'S' : ''}`;
@@ -74,14 +75,14 @@
             });
         }
  
-        // ── FILTRO ──
+        // filtro rapido por tipo de usuario
         function filtrar(tipo, btn) {
             document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('ativo'));
             btn.classList.add('ativo');
             renderizarCards(tipo === 'todos' ? todosUsuarios : todosUsuarios.filter(u => (u.role || 'USER') === tipo));
         }
  
-        // ── EDITAR ──
+        // editar usuario
         function abrirEdicao(id) {
             const u = todosUsuarios.find(x => x.id === id);
             if (!u) return;
@@ -159,7 +160,7 @@
                 .catch(() => alert('Não foi possível gerar a senha temporária.'));
         }
  
-        // ── ALTERNAR ROLE ──
+        // muda role de admin/usuario
         function alternarRole(id, roleAtual) {
             const novoRole = roleAtual === 'ADMIN' ? 'USER' : 'ADMIN';
             const u        = todosUsuarios.find(x => x.id === id);
@@ -174,7 +175,7 @@
             .catch(() => alert('Erro de conexão.'));
         }
  
-        // ── DELETAR ──
+        // deleta usuario
         function deletarUsuario(id, login) {
             if (!confirm(`Excluir "${login}"? Esta ação não pode ser desfeita.`)) return;
             fetch(`${API}/${id}`, { method: 'DELETE' })
@@ -182,7 +183,7 @@
                 .catch(() => alert('Erro de conexão.'));
         }
  
-        // ── NAVBAR ──
+        // atualiza link ativo no menu
         function setActiveLink() {
             const pagina = window.location.pathname.split('/').pop() || 'index.html';
             document.querySelectorAll('#menuLateral .nav-link').forEach(link => {
@@ -208,9 +209,7 @@
         }
 
 
-// ─────────────────────────────────────────────
-// LOGOUT
-// ─────────────────────────────────────────────
+// logout do usuario
 function fazerLogout() {
     const form    = document.createElement('form');
     form.method   = 'POST';
@@ -250,9 +249,7 @@ function carregarDadosUsuario() {
         });
 }
 
-// ─────────────────────────────────────────────
-// FOTO DE PERFIL
-// ─────────────────────────────────────────────
+// foto de perfil
 function mudarFoto(novaUrl) {
     const fotoEl = document.getElementById('user-foto');
     if (fotoEl) fotoEl.src = novaUrl;

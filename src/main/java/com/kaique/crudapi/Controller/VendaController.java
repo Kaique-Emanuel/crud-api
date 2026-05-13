@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/venda")
 public class VendaController {
 
+    // controller de vendas, só pega os dados e devolve pro frontend
     private final VendaRepository repository;
     private final ProdutoRepository produtoRepository;
 
@@ -27,11 +28,13 @@ public class VendaController {
 
     @GetMapping
     public List<Venda> listarVendas() {
+        // retorna tudo que tem de venda no banco
         return repository.findAll();
     }
 
     @GetMapping("/recentes")
     public List<Venda> listarRecentes() {
+        // traz as 10 vendas mais recentes, pra dashboard
         return repository.findTop10ByOrderByDataHoraDesc();
     }
 

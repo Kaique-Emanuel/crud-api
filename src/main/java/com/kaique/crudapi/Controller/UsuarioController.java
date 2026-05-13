@@ -16,6 +16,7 @@ import java.util.UUID;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/usuario")
+// controller de usuario
 public class UsuarioController {
 
     private final UsuarioService service;
@@ -26,7 +27,7 @@ public class UsuarioController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // Retorna o usuário da sessão atual
+    // retorna dados do usuario logado
     @GetMapping("/me")
     public Map<String, String> usuarioLogado(Authentication auth) {
         Usuario u = service.buscarPorLogin(auth.getName());
@@ -106,6 +107,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/esqueci-senha")
+    // marca solicitacao de reset para o admin ver
     public ResponseEntity<Map<String, String>> esqueciSenha(@RequestBody Map<String, String> body) {
         String login = body.getOrDefault("login", "").trim();
         String email = body.getOrDefault("email", "").trim();

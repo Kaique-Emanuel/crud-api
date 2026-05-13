@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "usuarios")
+// modelo de usuario
 public class Usuario {
 
     @Id

@@ -1,5 +1,8 @@
+// produtos.js - só o que rola na tela de produtos
+
 let produtosVendaCache = [];
 
+// inicia a página de produtos
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('produto-tbody')) carregarProdutos();
     if (document.getElementById('venda-produto')) carregarProdutosVenda();
@@ -21,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(navbarEl, { childList: true, subtree: true });
 });
 
+// carrega produtos e preenche tabela
 function carregarProdutos() {
     fetch(API_URL)
         .then(res => res.json())
@@ -68,11 +72,13 @@ function carregarProdutos() {
         .catch(err => console.error('Erro ao carregar produtos:', err));
 }
 
+// guarda produtos para usar na busca e venda
 function preencherSelectVenda(produtos) {
     produtosVendaCache = produtos || [];
     renderizarResultadosVenda('');
 }
 
+// carrega lista de produtos para vender
 function carregarProdutosVenda() {
     fetch(API_URL)
         .then(res => res.json())
@@ -80,6 +86,7 @@ function carregarProdutosVenda() {
         .catch(err => console.error('Erro ao carregar venda:', err));
 }
 
+// busca produto para venda
 function configurarBuscaVenda() {
     const busca = document.getElementById('venda-busca');
     if (!busca) return;
@@ -94,6 +101,7 @@ function configurarBuscaVenda() {
     busca.addEventListener('focus', () => renderizarResultadosVenda(busca.value));
 }
 
+// mostra os resultados da busca de venda
 function renderizarResultadosVenda(termo) {
     const container = document.getElementById('venda-resultados');
     if (!container) return;
@@ -123,6 +131,7 @@ function renderizarResultadosVenda(termo) {
     });
 }
 
+// seleciona o produto escolhido para venda
 function selecionarProdutoVenda(produto) {
     const produtoInput = document.getElementById('venda-produto');
     const buscaInput = document.getElementById('venda-busca');
@@ -133,6 +142,7 @@ function selecionarProdutoVenda(produto) {
     renderizarResultadosVenda(produto.nome || '');
 }
 
+// seleciona produto pelo id direto da tabela
 function selecionarProdutoVendaPorId(id) {
     const produto = produtosVendaCache.find(p => Number(p.id) === Number(id));
     if (!produto) return;
@@ -143,6 +153,7 @@ function selecionarProdutoVendaPorId(id) {
     document.querySelector('.venda-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
+// atualiza o card de info do produto selecionado
 function atualizarInfoProdutoVenda(produto) {
     const info = document.getElementById('venda-produto-info');
     if (!info) return;
@@ -155,6 +166,7 @@ function atualizarInfoProdutoVenda(produto) {
     info.innerText = `Estoque: ${produto.quantidade || 0} · Preço: R$ ${(produto.valor || 0).toFixed(2)} · Vendidos: ${produto.vendas || 0}`;
 }
 
+// chama a venda depois de selecionar o produto
 function registrarVendaSelecionada() {
     const produtoId = document.getElementById('venda-produto').value;
     const quantidade = parseInt(document.getElementById('venda-quantidade').value, 10);
@@ -180,6 +192,7 @@ function registrarVendaSelecionada() {
     registrarVenda(produtoId, quantidade, formaPagamento);
 }
 
+// envia a venda pro backend
 function registrarVenda(id, quantidade = 1, formaPagamento = 'Não informado') {
     const qtd = parseInt(quantidade, 10);
     const feedback = document.getElementById('venda-feedback');
@@ -223,6 +236,7 @@ function registrarVenda(id, quantidade = 1, formaPagamento = 'Não informado') {
         });
 }
 
+// exclui produto do estoque
 function deletarProduto(id) {
     if (confirm('Deseja excluir este produto?')) {
         fetch(`${API_URL}/${id}`, { method: 'DELETE' })

@@ -16,6 +16,7 @@ import java.util.Map;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/produto")
+// controller de produto
 public class ProdutoController {
     private final ProdutoService service;
     private final VendaRepository vendaRepository;
@@ -26,11 +27,13 @@ public class ProdutoController {
     }
 
     @GetMapping
+    // lista todos os produtos
     public List<Produto> buscarProdutos(){
         return  service.listaTodos();
     }
 
     @PostMapping
+    // cadastra novo produto
     public  Produto salvarNovoPorduto(@RequestBody Produto produto){
         return service.salvar(produto);
     }
@@ -62,6 +65,7 @@ public class ProdutoController {
     }
 
     @PostMapping("/{id}/vender")
+    // faz a venda e atualiza estoque
     public ResponseEntity<?> venderProduto(@PathVariable Long id, @RequestBody Map<String, Object> body) {
         Produto produto = service.buscarProduto(id);
         if (produto == null) return ResponseEntity.notFound().build();
@@ -104,6 +108,7 @@ public class ProdutoController {
     }
 
     @PostMapping("/{id}/entrada")
+    // adiciona itens ao estoque
     public ResponseEntity<?> entradaEstoque(@PathVariable Long id, @RequestBody Map<String, Object> body) {
         Produto produto = service.buscarProduto(id);
         if (produto == null) return ResponseEntity.notFound().build();
