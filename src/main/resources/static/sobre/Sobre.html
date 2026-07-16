@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sobre - Sistema de Estoque</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/shared/style-common.css">
+    <link rel="stylesheet" href="/sobre/sobre.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container py-5">
+        <div class="hero-section rounded-4 mb-5">
+            <i class="bi bi-box-seam"></i>
+            <h1 class="display-4 fw-bold mt-3">Estoque</h1>
+            <p class="lead text-secondary">Sistema de gestão de estoque e vendas com autenticação e controle de acesso.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <h2 class="text-primary mb-4">Sobre o Projeto</h2>
+                <p>Este projeto nasceu como um estudo prático de desenvolvimento backend com Spring Boot,
+                evoluindo para um sistema completo de controle de estoque.
+                Ele cobre cadastro e gestão de produtos, registro de vendas com atualização automática
+                de estoque, geração de relatórios e um painel administrativo com controle de usuários
+                e permissões (admin/usuário comum).</p>
+                <p>Construído com Spring Boot e Spring Security no backend, banco de dados relacional para
+                persistência, e um frontend em JavaScript puro consumindo a própria API REST.</p>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card feature-card p-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-lightning-charge text-warning fs-3 me-3"></i>
+                                <div>
+                                    <h5 class="mb-0">Autenticação e Autorização</h5>
+                                    <small class="text-secondary">
+                                    Login com sessão, senhas criptografadas com BCrypt e controle de acesso por papel (admin/usuário).</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card feature-card p-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-shield-check text-success fs-3 me-3"></i>
+                                <div>
+                                    <h5 class="mb-0">Relatórios de Vendas</h5>
+                                    <small class="text-secondary">Faturamento, produto mais vendido e forma de pagamento mais usada, calculados em tempo real.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5 border-secondary">
+
+        <div class="text-center">
+            <p class="text-secondary small">Desenvolvido por Kaique &copy; 2024</p>
+            <a href="/home/index.html" class="btn btn-outline-primary mt-3">
+                <i class="bi bi-arrow-left me-2"></i> Voltar ao Dashboard
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

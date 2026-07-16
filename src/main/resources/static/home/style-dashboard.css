@@ -1,0 +1,196 @@
+/* Estilos específicos da página Dashboard */
+#titulo {
+  margin: 10%;
+  position: relative;
+}
+
+#Titulo-Principal {
+  font-family: "Archivo Black", sans-serif;
+  color: white;
+}
+
+#Sub-Titulo {
+  font-family: "Share Tech", sans-serif;
+  color: white;
+  font-size: 20px;
+  margin-top: -20px;
+}
+
+#cards {
+  font-family: "Share Tech", sans-serif;
+  margin: 40px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.dashboard-card {
+  flex: 1;
+  background: #252525;
+  border-radius: 12px;
+  padding: 25px;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  min-width: 250px;
+  border-left: 5px solid #00ff88;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text {
+  color: #aaa;
+  margin-bottom: 5px;
+}
+
+.icon {
+  font-size: 40px;
+}
+
+.produtos .icon,
+.valor .icon {
+  color: #00ff88;
+}
+
+.alerta .icon {
+  color: orange;
+}
+
+.produtos {
+  border-left: 4px solid #00ff88;
+}
+
+.alerta {
+  border-left: 4px solid orange;
+}
+
+.valor {
+  border-left: 4px solid #00ff88;
+}
+
+.entrada {
+  border-left: 5px solid #00ff88;
+}
+
+.entrada .icon {
+  color: #00ff88;
+}
+
+#Status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #00c853;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.badge-entrada {
+  background-color: rgba(0, 255, 136, 0.2);
+  color: #00ff88;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.relatorios-dashboard {
+  margin: 0 40px 50px;
+  padding: 24px;
+  border-top: 1px solid #333;
+}
+
+.relatorio-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.relatorio-header h2 {
+  font-family: "Archivo Black", sans-serif;
+  margin: 0;
+}
+
+.relatorio-header p {
+  color: #aaa;
+  margin: 0;
+}
+
+.relatorio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.relatorio-card {
+  background: #252525;
+  border: 1px solid #333;
+  border-left: 4px solid #00ff88;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.relatorio-card span {
+  display: block;
+  color: #aaa;
+  font-size: 0.86rem;
+  margin-bottom: 8px;
+}
+
+.relatorio-card strong {
+  color: #fff;
+  font-size: 1.15rem;
+}
+
+.relatorio-historico {
+  margin-top: 18px;
+  background: #252525;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.relatorio-historico h3 {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.ultimas-vendas {
+  display: grid;
+  gap: 10px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.venda-historico-item {
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #171717;
+  padding: 9px 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.venda-historico-item strong,
+.venda-historico-item span {
+  color: #fff;
+}
+
+.venda-historico-item small {
+  display: block;
+  color: #aaa;
+  margin-top: 2px;
+}

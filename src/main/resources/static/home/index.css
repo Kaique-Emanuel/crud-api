@@ -1,0 +1,393 @@
+body {
+background-color: #1f1f1f; /* O preto que você gostou */
+  color: white;
+  font-family: "Share Tech", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#lista {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.row{
+margin-top: 10%;
+}
+
+#titulo{
+  margin: 10%;
+  position: relative; /* 🔥 necessário */
+  
+}
+
+#Titulo-Principal {
+  font-family: "Archivo Black", sans-serif;
+  color: white;
+}
+
+
+#Sub-Titulo{
+  font-family: "Share Tech", sans-serif;
+  color: white;
+  font-size: 20px;
+  margin-top: -20px;
+}
+
+
+
+#cards {
+  font-family: "Share Tech", sans-serif;
+  margin: 40px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; 
+}
+/* CARD BASE */
+.dashboard-card {
+flex: 1;
+  background: #252525; /* Um tom levemente acima do preto para dar profundidade */
+  border-radius: 12px;
+  padding: 25px;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+  min-width: 250px;
+  border-left: 5px solid #00ff88;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+}
+
+/* CONTEÚDO */
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text {
+  color: #aaa;
+  margin-bottom: 5px;
+}
+
+.icon {
+  font-size: 40px;
+}
+
+/* CORES POR TIPO */
+.produtos .icon {
+  color: #00ff88;
+}
+
+.alerta .icon {
+  color: orange;
+}
+
+.valor .icon {
+  color: #00ff88;
+}
+
+/* OPCIONAL: borda colorida (nível premium) */
+.produtos {
+  border-left: 4px solid #00ff88;
+}
+
+.alerta {
+  border-left: 4px solid orange;
+}
+
+.valor {
+  border-left: 4px solid #00ff88;
+}
+
+#Status{
+ position: absolute;
+  top: 0;
+  right: 0;
+
+  background-color: #00c853;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+
+}
+
+/* Cores específicas para o Fluxo */
+.entrada { border-left: 5px solid #00ff88; }
+.entrada .icon { color: #00ff88; }
+
+.saida { border-left: 5px solid #ff4444; } /* Vermelho para saídas */
+.saida .icon { color: #ff4444; }
+
+/* Estilo para as badges na tabela de fluxo */
+.badge-entrada { background-color: rgba(0, 255, 136, 0.2); color: #00ff88; padding: 5px 10px; border-radius: 5px; }
+.badge-saida { background-color: rgba(255, 68, 68, 0.2); color: #ff4444; padding: 5px 10px; border-radius: 5px; }
+
+.venda-busca-wrapper {
+  position: relative;
+}
+
+.venda-resultados {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.venda-opcao {
+  width: 100%;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  background: #171717;
+  color: #fff;
+  padding: 8px 10px;
+  text-align: left;
+  display: grid;
+  gap: 2px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.venda-opcao:hover:not(:disabled) {
+  border-color: #00ff88;
+  background: rgba(0, 255, 136, 0.08);
+}
+
+.venda-opcao:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.venda-opcao small {
+  color: #aaa;
+}
+
+.ultimas-vendas {
+  display: grid;
+  gap: 10px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.venda-historico-item {
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #171717;
+  padding: 9px 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.venda-historico-item strong,
+.venda-historico-item span {
+  color: #fff;
+}
+
+.venda-historico-item small {
+  display: block;
+  color: #aaa;
+  margin-top: 2px;
+}
+
+.relatorios-dashboard {
+  margin: 0 40px 50px;
+  padding: 24px;
+  border-top: 1px solid #333;
+}
+
+.relatorio-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.relatorio-header h2 {
+  font-family: "Archivo Black", sans-serif;
+  margin: 0;
+}
+
+.relatorio-header p {
+  color: #aaa;
+  margin: 0;
+}
+
+.relatorio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.relatorio-card {
+  background: #252525;
+  border: 1px solid #333;
+  border-left: 4px solid #00ff88;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.relatorio-card span {
+  display: block;
+  color: #aaa;
+  font-size: 0.86rem;
+  margin-bottom: 8px;
+}
+
+.relatorio-card strong {
+  color: #fff;
+  font-size: 1.15rem;
+}
+
+.relatorio-historico {
+  margin-top: 18px;
+  background: #252525;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.relatorio-historico h3 {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+
+
+
+/* --- Menu Lateral --- */
+#menuLateral { overflow: visible !important; }
+
+/* --- Setinha para Fora --- */
+.btn-sair-fora {
+    position: absolute !important;
+    left: -35px; top: 20px;
+    background-color: #212529 !important;
+    width: 35px; height: 45px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px 0 0 8px;
+    border: none; color: white;
+    box-shadow: -5px 0 10px rgba(0,0,0,0.3);
+    z-index: 1060;
+}
+
+/* --- Perfil --- */
+.btn-perfil-wrapper { background: none; border: none; padding: 0; cursor: pointer; transition: 0.2s; }
+.btn-perfil-wrapper:hover { transform: scale(1.05); }
+
+.img-perfil-custom {
+    width: 90px; height: 90px; object-fit: cover;
+    border-radius: 50%; border: 3px solid #0d6efd; padding: 3px;
+}
+
+.status-indicator {
+    position: absolute; bottom: 5px; right: 5px;
+    width: 15px; height: 15px; background: #28a745;
+    border: 2px solid #212529; border-radius: 50%;
+}
+
+/* --- Itens do Menu (Azul dinâmico) --- */
+#menuLateral .nav-link {
+    margin: 5px 12px; border-radius: 10px;
+    color: #aeb7c1 !important; padding: 12px 15px !important;
+    transition: 0.3s;
+}
+
+#menuLateral .nav-link.active {
+    background-color: #0d6efd !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+/* --- Modal Opções --- */
+.img-opcao {
+    width: 70px; height: 70px; cursor: pointer;
+    border-radius: 50%; border: 2px solid transparent; transition: 0.2s;
+}
+.img-opcao:hover { border-color: #0d6efd; }
+
+
+/* Botão de Adicionar Foto (Círculo com +) */
+.btn-add-foto {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px dashed #0d6efd; /* Borda tracejada azul */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #0d6efd;
+    font-size: 1.5rem;
+    transition: all 0.2s ease;
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.btn-add-foto:hover {
+    background-color: #0d6efd;
+    color: white;
+    border-style: solid;
+    transform: scale(1.05);
+}
+
+/* Ajuste das miniaturas no modal */
+.img-opcao {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.2s;
+}
+
+.img-opcao:hover {
+    border-color: #0d6efd;
+}
+
+/* Container da foto customizada */
+.wrapper-foto-opcao {
+    position: relative;
+    display: inline-block;
+}
+
+/* Efeito de Zoom (Seleção) */
+.img-opcao {
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease, border 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.img-opcao.selecionada {
+    transform: scale(1.15); /* Aumenta o tamanho */
+    border: 3px solid #0d6efd; /* Borda azul */
+}
+
+/* Botão de Deletar (X) */
+.btn-deletar-foto {
+    position: absolute;
+    top: -2px; right: -2px;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px; height: 20px;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
